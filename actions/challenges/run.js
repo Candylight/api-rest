@@ -7,13 +7,26 @@ module.exports = (server) => {
         Challenge.findById(req.params.id, (err, challenge) => {
             if (err)
                 return res.status(500).send(err);
+
+            if(!challenge)
+                return res.status(404).send();
+
+            if(challenge.status != "Selecting")
+                return res.status(403).send();
+
             let bots = challenge.bots;
 
-            Bot.findById(bots[0], (err, bot1) => {
+            let query = Bot.findById(bots[0])
+                .populate('weapons');
+
+            query.exec((err, bot1) => {
                 if (err)
                     return res.status(500).send(err);
 
-                Bot.findById(bots[1], (err, bot2) => {
+                let query2 = Bot.findById(bots[1])
+                    .populate('weapons');
+
+                query2.exec((err, bot2) => {
                     if (err)
                         return res.status(500).send(err);
 
@@ -23,12 +36,13 @@ module.exports = (server) => {
                     for(let weapon of bot1.weapons){
                         bot1power += parseInt(weapon.dommages);
                     }
+                    console.log("botPower2");
                     for(let weapon of bot2.weapons){
                         bot2power += parseInt(weapon.dommages);
                     }
 
                     let winner = (bot1power/bot1.health) < (bot2power/bot2.health) ? bot2 : bot1 ;
-                    challenge.winner.push(winner);
+                    challenge.winner = winner.owner;
 
                     challenge.status = "Done";
 

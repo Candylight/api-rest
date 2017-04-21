@@ -15,12 +15,14 @@ module.exports = (server) => {
 
     router.get('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureCurrentUser,
         server.actions.users.show
     );
 
     router.put('/',
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureCurrentUser,
         server.middlewares.clean(['password', '_id']),
         server.actions.users.update
     );
@@ -52,6 +54,12 @@ module.exports = (server) => {
     router.get('/:id/boughtWeapons',
       server.middlewares.ensureAuthenticated,
       server.actions.users.boughtWeapons
+    );
+
+    router.get('/:id/myBots',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureCurrentUser,
+        server.actions.users.myBots
     );
 
     return router;

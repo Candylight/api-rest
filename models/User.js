@@ -20,10 +20,10 @@ const UserSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'Bot'
     }],
-    admin: [{
+    admin: {
         type: Boolean,
         required: true
-    }],
+    },
     credit: {
         type: Number,
         default: 0

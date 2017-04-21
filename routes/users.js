@@ -28,6 +28,8 @@ module.exports = (server) => {
     );
 
     router.post('/:id/credit/:idUser/:value',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.users.credit
     );
 

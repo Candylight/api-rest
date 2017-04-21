@@ -3,6 +3,7 @@ const router = require('express').Router();
 module.exports = (server) => {
 
     router.post('/',
+        server.middlewares.ensureAuthenticated,
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.User.schema),
         server.actions.users.create
@@ -13,6 +14,7 @@ module.exports = (server) => {
     );
 
     router.get('/:id',
+        server.middlewares.ensureAuthenticated,
         server.actions.users.show
     );
 
@@ -24,6 +26,7 @@ module.exports = (server) => {
     );
 
     router.delete('/:id',
+        server.middlewares.ensureAuthenticated,
         server.actions.users.remove
     );
 

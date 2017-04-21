@@ -3,15 +3,23 @@ const timestamps = require('mongoose-timestamps');
 const Schema = mongoose.Schema;
 
 const WeaponSchema = Schema({
-    damage: {
-        type: Number,
-        required: true
-    },
     name: {
         type: String,
         required: true
     },
-    weight: {
+    description: {
+        type: String,
+        required: true
+    },
+    prix: {
+        type: Number,
+        required: true
+    },
+    dommages: {
+        type: Number,
+        required: true
+    },
+    capacité: {
         type: Number,
         required: true
     },

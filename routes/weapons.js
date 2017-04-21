@@ -14,6 +14,10 @@ module.exports = (server) => {
         server.actions.weapons.list
     );
 
+    router.get('/available',
+        server.actions.weapons.available
+    );
+
     router.get('/:id',
         server.actions.weapons.show
     );

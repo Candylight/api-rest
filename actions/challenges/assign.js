@@ -27,7 +27,7 @@ module.exports = (server) => {
                     return res.status(403).send();
 
                 // Test if user already has robot in challenge
-                if (challenge.bots.length == 1 && challenge.bots[0].owner._id == req.userId){
+                if (challenge.bots.length == 1 && challenge.bots[0] == bot._id.toString()){
                     return res.status(403).send();
                 }
 

@@ -24,10 +24,10 @@ const UserSchema = Schema({
         type: Boolean,
         required: true
     }],
-    credit: [{
+    credit: {
         type: Number,
         default: 0
-    }]
+    }
 });
 
 UserSchema.plugin(timestamps);

@@ -30,5 +30,9 @@ module.exports = (server) => {
         server.actions.users.remove
     );
 
+    router.post('/:id/assign/:botId',
+        server.actions.users.assign
+    );
+
     return router;
 };

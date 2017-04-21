@@ -16,6 +16,10 @@ const UserSchema = Schema({
         type: String,
         required: true
     },
+    weapons: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Weapon'
+    }],
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'

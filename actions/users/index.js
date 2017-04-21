@@ -9,6 +9,7 @@ module.exports = (server) => {
         assign: require('./assign')(server),
         drop: require('./drop')(server),
         buyWeapon: require('./buyWeapon')(server),
-        boughtWeapons: require('./boughtWeapons')(server)
+        boughtWeapons: require('./boughtWeapons')(server),
+        myBots: require('./myBots')(server)
     };
 };

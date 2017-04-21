@@ -4,6 +4,7 @@ module.exports = (server) => {
         ensureBodyFields: require('./ensureBodyFields'),
         ensureAuthenticated: require('./ensureAuthenticated')(server),
         ensureIsAdmin: require('./ensureIsAdmin')(server),
+        ensureCurrentUser: require('./ensureCurrentUser')(server),
         clean: require('./clean'),
         logger: require('./logger'),
         res: require('./res')

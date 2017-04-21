@@ -1,14 +1,9 @@
 module.exports = (server) => {
     const User = server.models.User;
+    const Bot = server.models.Bot;
 
     return (req, res, next) => {
         User.findById(req.params.id)
-            .populate({
-                path: 'bots',
-                populate: {
-                    path: 'weapons'
-                }
-            })
             .then(ensureOne)
             .then(respond)
             .catch(error);
@@ -18,8 +13,7 @@ module.exports = (server) => {
         }
 
         function respond(data) {
-          console.log(data)
-            return res.status(200).send(data)
+            return res.status(200).send(data.bots)
         }
 
         function error(reason) {

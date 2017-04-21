@@ -30,5 +30,10 @@ module.exports = (server) => {
         server.actions.challenges.remove
     );
 
+    router.post('/respond/:id/:response',
+        server.middlewares.ensureAuthenticated,
+        server.actions.challenges.respond
+    );
+
     return router;
 };

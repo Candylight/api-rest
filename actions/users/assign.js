@@ -22,7 +22,7 @@ module.exports = (server) => {
                 if (!user)
                     return res.status(404).send();
 
-                bot.user = user._id;
+                bot.owner = user._id;
 
                 user.bots.push(bot._id);
 

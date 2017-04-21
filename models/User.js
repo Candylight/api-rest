@@ -19,6 +19,10 @@ const UserSchema = Schema({
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'
+    }],
+    admin: [{
+        type: Boolean,
+        required: true
     }]
 });
 

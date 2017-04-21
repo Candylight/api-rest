@@ -45,5 +45,9 @@ module.exports = (server) => {
         server.actions.challenges.run
     );
 
+    router.get('/palmares/:id',
+        server.actions.challenges.palmares
+    );
+
     return router;
 };

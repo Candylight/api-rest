@@ -34,6 +34,14 @@ module.exports = (server) => {
         server.middlewares.ensureAuthenticated,
         server.middlewares.ensureIsAdmin,
         server.actions.users.credit
+      );
+
+    router.post('/:id/assign/:botId',
+        server.actions.users.assign
+    );
+
+    router.post('/:id/drop/:botId',
+        server.actions.users.drop
     );
 
     return router;

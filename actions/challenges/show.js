@@ -3,10 +3,6 @@ module.exports = (server) => {
 
     return (req, res, next) => {
         let query = Challenge.findById(req.params.id).populate({
-            path: 'bots',
-            populate: {
-                path: 'weapons'
-            },
             path: 'winner'
         });
 

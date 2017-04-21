@@ -6,4 +6,5 @@ module.exports = (server) => {
     server.use('/weapons', require('./weapons')(server));
     server.use('/users', require('./users')(server));
     server.use('/auth', require('./auth')(server));
+    server.use('/challenges', require('./challenges')(server));
 };

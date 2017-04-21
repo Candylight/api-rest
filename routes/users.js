@@ -44,5 +44,10 @@ module.exports = (server) => {
         server.actions.users.drop
     );
 
+    router.post('/:id/buyWeapon/:weaponId',
+      server.middlewares.ensureAuthenticated,
+      server.actions.users.buyWeapon
+    );
+
     return router;
 };

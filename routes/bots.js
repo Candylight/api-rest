@@ -15,6 +15,10 @@ module.exports = (server) => {
         server.actions.bots.list
     );
 
+    router.get('/available',
+      server.actions.bots.listAvailable
+    );
+
     router.get('/:id',
         server.actions.bots.show
     );

@@ -8,6 +8,7 @@ module.exports = (server) => {
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Bot.schema),
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.bots.create
     );
 

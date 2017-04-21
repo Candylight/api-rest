@@ -27,5 +27,9 @@ module.exports = (server) => {
         server.actions.users.remove
     );
 
+    router.post('/:id/credit/:idUser/:value',
+        server.actions.users.credit
+    );
+
     return router;
 };

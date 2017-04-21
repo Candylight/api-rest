@@ -26,6 +26,10 @@ const WeaponSchema = Schema({
     bot: {
         type: Schema.Types.ObjectId,
         ref: 'Bot'
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

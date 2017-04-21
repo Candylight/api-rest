@@ -1,8 +1,8 @@
 module.exports = (server) => {
-    const Weapon = server.models.Weapon;
+    const Challenge = server.models.Challenge;
 
     return (req, res, next) => {
-        Weapon.find((err, instances) => {
+        Challenge.find((err, instances) => {
             if (err)
                 return res.status(500).send(err);
 

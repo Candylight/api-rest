@@ -1,6 +1,5 @@
 module.exports = (req, res, next) => {
     res.error = (error) => {
-        console.log(error);
         if (error.code)
             return res.status(error.code).send(error.reason);
 

@@ -19,13 +19,16 @@ module.exports = (server) => {
                 if (!challenge)
                     return res.status(404).send();
 
+                if(challenge.status != "Selecting")
+                    return res.status(403).send();
+
                 // Maximum bot = 2
                 if (challenge.bots.length == 2)
                     return res.status(403).send();
 
                 // Test if user already has robot in challenge
-                if (challenge.bots.length == 1){
-                    // TODO Check if user already has robot in challenge
+                if (challenge.bots.length == 1 && challenge.bots[0].owner._id == req.userId){
+                    return res.status(403).send();
                 }
 
                 challenge.bots.push(bot._id);

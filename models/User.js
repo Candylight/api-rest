@@ -23,6 +23,10 @@ const UserSchema = Schema({
     admin: [{
         type: Boolean,
         required: true
+    }],
+    credit: [{
+        type: Number,
+        default: 0
     }]
 });
 

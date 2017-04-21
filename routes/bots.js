@@ -16,10 +16,11 @@ module.exports = (server) => {
     );
 
     router.get('/available',
-      server.actions.bots.listAvailable
+        server.actions.bots.listAvailable
     );
 
     router.get('/:id',
+        server.middlewares.ensureAuthenticated,
         server.actions.bots.show
     );
 

@@ -20,10 +20,14 @@ module.exports = (server) => {
 
     router.put('/:id',
         server.middlewares.bodyParser.json(),
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.update
     );
 
     router.delete('/:id',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.remove
     );
 

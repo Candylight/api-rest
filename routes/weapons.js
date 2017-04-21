@@ -3,6 +3,7 @@ const router = require('express').Router();
 module.exports = (server) => {
 
     router.post('/',
+        server.middlewares.ensureAuthenticated,
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Weapon.schema),
         server.middlewares.ensureAuthenticated,
@@ -19,10 +20,12 @@ module.exports = (server) => {
     );
 
     router.get('/:id',
+        server.middlewares.ensureAuthenticated,
         server.actions.weapons.show
     );
 
     router.put('/:id',
+        server.middlewares.ensureAuthenticated,
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureAuthenticated,
         server.middlewares.ensureIsAdmin,

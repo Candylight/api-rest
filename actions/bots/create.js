@@ -14,7 +14,7 @@ module.exports = (server) => {
                 if (err)
                     return res.status(500).send(err);
 
-                user.bots.push(instance._id);
+              //  user.bots.push(instance._id);
                 user.save((err, user) => {
                     if (err)
                         return res.status(500).send(err);

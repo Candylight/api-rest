@@ -19,9 +19,11 @@ module.exports = (server) => {
                 if (!challenge)
                     return res.status(404).send();
 
+                // Maximum bot = 2
                 if (challenge.bots.length == 2)
                     return res.status(403).send();
 
+                // Test if user already has robot in challenge
                 if (challenge.bots.length == 1){
                     // TODO Check if user already has robot in challenge
                 }
@@ -32,7 +34,7 @@ module.exports = (server) => {
                     if (err)
                         return res.status(500).send(err);
                     res.status(204).send();
-                })
+                });
             })
         })
     };

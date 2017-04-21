@@ -5,7 +5,8 @@ module.exports = (server) => {
         list: require('./list')(server),
         show: require('./show')(server),
         remove: require('./remove')(server),
-        assign: require('./assign')(server)
+        assign: require('./assign')(server),
+        drop: require('./drop')(server)
 
     };
 };

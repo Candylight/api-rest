@@ -16,6 +16,7 @@ module.exports = (server) => {
             .then(ensureSource)
             .then(getTarget)
             .then(ensureTarget)
+            .then(ensureSourceTargetDifferents)
             .then(ensureUsersHaveBots)
             .then(getTodaySourceChallenges)
             .then(ensureSourceChallenges)
@@ -39,6 +40,11 @@ module.exports = (server) => {
 
         function ensureTarget(rTarget) {
             return rTarget ? target = rTarget : Promise.reject({error: 404});
+        }
+
+        function ensureSourceTargetDifferents() {
+            if(source._id.toString() == target._id.toString())
+                return Promise.reject({error: 403});
         }
 
         function ensureUsersHaveBots(){

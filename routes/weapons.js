@@ -6,6 +6,8 @@ module.exports = (server) => {
         server.middlewares.ensureAuthenticated,
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Weapon.schema),
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.create
     );
 
@@ -25,11 +27,14 @@ module.exports = (server) => {
     router.put('/:id',
         server.middlewares.ensureAuthenticated,
         server.middlewares.bodyParser.json(),
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.update
     );
 
     router.delete('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.remove
     );
 

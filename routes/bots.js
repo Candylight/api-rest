@@ -8,6 +8,7 @@ module.exports = (server) => {
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Bot.schema),
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.bots.create
     );
 
@@ -26,12 +27,14 @@ module.exports = (server) => {
 
     router.put('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.middlewares.bodyParser.json(),
         server.actions.bots.update
     );
 
     router.delete('/:id',
         server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.bots.remove
     );
 

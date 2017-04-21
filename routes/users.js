@@ -30,5 +30,11 @@ module.exports = (server) => {
         server.actions.users.remove
     );
 
+    router.post('/:id/credit/:idUser/:value',
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
+        server.actions.users.credit
+    );
+
     return router;
 };

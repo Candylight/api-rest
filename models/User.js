@@ -19,7 +19,15 @@ const UserSchema = Schema({
     bots: [{
         type: Schema.Types.ObjectId,
         ref: 'Bot'
-    }]
+    }],
+    admin: {
+        type: Boolean,
+        required: true
+    },
+    credit: {
+        type: Number,
+        default: 0
+    }
 });
 
 UserSchema.plugin(timestamps);

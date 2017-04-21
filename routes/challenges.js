@@ -35,5 +35,15 @@ module.exports = (server) => {
         server.actions.challenges.respond
     );
 
+    router.post('/:id/assign/:botId',
+        server.middlewares.ensureAuthenticated,
+        server.actions.challenges.assign
+    );
+
+    router.post('/run/:id',
+        server.middlewares.ensureAuthenticated,
+        server.actions.challenges.run
+    );
+
     return router;
 };

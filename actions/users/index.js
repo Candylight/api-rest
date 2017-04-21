@@ -8,6 +8,7 @@ module.exports = (server) => {
         credit: require('./credit')(server),
         assign: require('./assign')(server),
         drop: require('./drop')(server),
-        buyWeapon: require('./buyWeapon')(server)
+        buyWeapon: require('./buyWeapon')(server),
+        boughtWeapons: require('./boughtWeapons')(server)
     };
 };

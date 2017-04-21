@@ -44,9 +44,14 @@ module.exports = (server) => {
         server.actions.users.drop
     );
 
-    router.post('/:id/buyWeapon/:weaponId',
+    router.post('/:id/buyWeapon',
       server.middlewares.ensureAuthenticated,
       server.actions.users.buyWeapon
+    );
+
+    router.get('/:id/boughtWeapons',
+      server.middlewares.ensureAuthenticated,
+      server.actions.users.boughtWeapons
     );
 
     return router;

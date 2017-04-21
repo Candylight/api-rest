@@ -5,6 +5,8 @@ module.exports = (server) => {
     router.post('/',
         server.middlewares.bodyParser.json(),
         server.middlewares.ensureBodyFields(server.models.Weapon.schema),
+        server.middlewares.ensureAuthenticated,
+        server.middlewares.ensureIsAdmin,
         server.actions.weapons.create
     );
 
